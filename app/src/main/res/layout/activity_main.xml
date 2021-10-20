@@ -28,6 +28,8 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
                 android:layout_weight="1"
+                android:gravity="right"
+                android:textSize="20dp"
                 android:text="Caption: " />
 
             <EditText
@@ -38,7 +40,7 @@
                 android:hint="Name"
                 android:inputType="textPersonName"
                 android:textColor="@color/white"
-                android:textColorHint="@color/white" />
+                android:textColorHint="@color/white_text" />
         </LinearLayout>
 
         <ImageView
@@ -68,8 +70,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
+                android:textSize="20dp"
+                android:gravity="right"
                 android:layout_weight="1"
-                android:text="Name" />
+                android:text="Name: " />
 
             <EditText
                 android:id="@+id/txtName"
@@ -79,7 +83,7 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:hint="Name"
-                android:textColorHint="@color/white"
+                android:textColorHint="@color/white_text"
                 android:inputType="textPersonName" />
         </LinearLayout>
 
@@ -87,7 +91,7 @@
             android:id="@+id/btnAddPost"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:text="Add post" />
 
     </LinearLayout>
 
