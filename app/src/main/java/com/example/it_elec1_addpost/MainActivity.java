@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -35,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
     Intent intent;
     int RESULT_LOAD_IMAGE = 1;
     Date date = new Date();
+    String path;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +65,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
             post.setName(txtName.getText().toString());
             post.setCaption(txtCaption.getText().toString());
             post.setDateTime(DateFormat.getDateInstance().format(date));
+            post.setImgPath(path);
             arrPost.add(post);
         }
         else if(view.getId() == R.id.btnBrowse){
@@ -87,6 +91,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
 
             int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
             String picturePath = cursor.getString(columnIndex);
+            path = picturePath;
             cursor.close();
 
             ImageView imageView = (ImageView) findViewById(R.id.imgPost);
