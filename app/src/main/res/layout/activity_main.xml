@@ -98,7 +98,6 @@
     <LinearLayout
         android:layout_width="350dp"
         android:layout_height="match_parent"
-        android:background="@color/container"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
