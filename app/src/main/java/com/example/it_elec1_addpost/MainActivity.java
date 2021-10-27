@@ -15,6 +15,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -30,8 +31,8 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
     EditText txtCaption;
     Button btnAddPost;
     Button btnBrowse;
-    Post post;
     ImageView imgPost;
+    Post post;
     ArrayList<Post> arrPost;
     PostAdapter adapter;
     Intent intent;
@@ -68,12 +69,23 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
             post.setImgPath(path);
             arrPost.add(post);
         }
-        else if(view.getId() == R.id.btnBrowse){
+        else if(view.getId() == R.id.btnBrowse) {
             intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
             startActivityForResult(intent, RESULT_LOAD_IMAGE);
         }
 
-        adapter = new PostAdapter(this, arrPost);
+
+        adapter = new PostAdapter(this, arrPost, new PostAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClickLike(View v, int position) {
+                LikeClicked(position);
+            }
+
+            @Override
+            public void onItemClickDelete(int position) {
+                DeleteClicked(position);
+            }
+        });
         lstPost.setAdapter(adapter);
     }
 
@@ -97,5 +109,17 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
             ImageView imageView = (ImageView) findViewById(R.id.imgPost);
             imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
         }
+    }
+
+    public void LikeClicked(int position) {
+        Post newPost = arrPost.get(position);
+        newPost.setLike( newPost.getLike() == 0 ? 1 : 0);
+        arrPost.set(position, newPost);
+        adapter.notifyDataSetChanged();
+    }
+
+    public void DeleteClicked(int position) {
+        arrPost.remove(position);
+        adapter.notifyDataSetChanged();
     }
 }

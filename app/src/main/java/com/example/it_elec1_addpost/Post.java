@@ -10,6 +10,25 @@ public class Post {
     private String name;
     private String caption;
     private String DateTime;
+    private int like;
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    private String comment;
+
+    public int getLike() {
+        return like;
+    }
+
+    public void setLike(int like) {
+        this.like = like;
+    }
 
     public String getImgPath() {
         return imgPath;
