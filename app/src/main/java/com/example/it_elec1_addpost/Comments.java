@@ -5,14 +5,13 @@ import java.util.ArrayList;
 public class Comments {
     private  String comment;
     private int position;
-    private ArrayList<String> comments;
 
-    public String getComments(int i) {
-        return comments.get(i);
+    public String getComment() {
+        return comment;
     }
 
-    public void setComments(String comments) {
-        this.comments.add(comments);
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 
     public int getPosition() {
@@ -23,11 +22,5 @@ public class Comments {
         this.position = position;
     }
 
-    public String getComment() {
-        return comment;
-    }
 
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
 }

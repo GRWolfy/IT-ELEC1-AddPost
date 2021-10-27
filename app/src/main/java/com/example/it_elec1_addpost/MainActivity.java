@@ -27,7 +27,7 @@ import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity implements OnClickListener{
     ListView lstPost;
-    EditText txtName;
+    EditText editTextAddCaption;
     EditText txtCaption;
     Button btnAddPost;
     Button btnBrowse;
@@ -47,8 +47,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
         Objects.requireNonNull(getSupportActionBar()).hide();
 
         lstPost = findViewById(R.id.lstPost);
-        txtName = findViewById(R.id.txtName);
-        txtCaption = findViewById(R.id.txtCaption);
+        editTextAddCaption = findViewById(R.id.editTextAddCaption);
         btnAddPost = findViewById(R.id.btnAddPost);
         btnBrowse = findViewById(R.id.btnBrowse);
         imgPost = findViewById(R.id.imgPost);
@@ -63,8 +62,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
     public void onClick(View view) {
         if(view.getId() == R.id.btnAddPost) {
             post = new Post();
-            post.setName(txtName.getText().toString());
-            post.setCaption(txtCaption.getText().toString());
+            post.setCaption(editTextAddCaption.getText().toString());
             post.setDateTime(DateFormat.getDateInstance().format(date));
             post.setImgPath(path);
             arrPost.add(post);

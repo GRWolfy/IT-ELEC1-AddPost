@@ -23,7 +23,6 @@ public class CommentsAdapter extends ArrayAdapter<Comments> {
         }
 
         TextView txtComment = convertView.findViewById(R.id.txtComment);
-        TextView txtCommentInitials = convertView.findViewById(R.id.txtCommentIntials);
 
         ArrayList<Comments> comments = new ArrayList<>();
         int MAX_SIZE = comments.size();

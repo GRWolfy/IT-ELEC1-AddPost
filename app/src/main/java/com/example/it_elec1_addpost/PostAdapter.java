@@ -48,9 +48,7 @@ public class PostAdapter extends ArrayAdapter<Post> {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.row_item,parent, false );
         }
 
-        TextView txtOutput_Name = convertView.findViewById(R.id.txtOutput_Name);
         TextView txtOutput_Caption = convertView.findViewById(R.id.txtOutput_Caption);
-        TextView txtFirstLetter = convertView.findViewById(R.id.txtFirstLetter);
         TextView txtDateTIme = convertView.findViewById(R.id.txtDateTime);
         ImageView imgPost = convertView.findViewById(R.id.imgOutput_Post);
         Button btnLike = convertView.findViewById(R.id.btnLike);
@@ -67,12 +65,12 @@ public class PostAdapter extends ArrayAdapter<Post> {
         if(currentPost.getLike() == 0)
         {
             btnLike.setText("Like");
-            btnLike.setBackgroundColor(Color.parseColor("#FF3700B3"));
+            btnLike.setBackgroundColor(Color.parseColor("#242526"));
         }
         else
         {
             btnLike.setText("Liked");
-            btnLike.setBackgroundColor(Color.parseColor("#24db76"));
+            btnLike.setBackgroundColor(Color.parseColor("#FF3700B3"));
         }
 
         btnLike.setOnClickListener(new View.OnClickListener() {
@@ -102,7 +100,6 @@ public class PostAdapter extends ArrayAdapter<Post> {
                         public void onClick(View view) {
                             comment = new Comments();
                             comment.setPosition(position);
-                            comment.setComments(editText_AddComment.getText().toString());
                             comment.setComment(editText_AddComment.getText().toString());
                             arrComments.add(comment);
                             adapter = new CommentsAdapter(context, arrComments);
@@ -115,8 +112,6 @@ public class PostAdapter extends ArrayAdapter<Post> {
 
         txtDateTIme.setText(currentPost.getDateTime());
         txtOutput_Caption.setText(currentPost.getCaption());
-        txtOutput_Name.setText(currentPost.getName());
-        txtFirstLetter.setText(String.valueOf(currentPost.getName().charAt(0)).toUpperCase());
         imgPost.setImageBitmap(BitmapFactory.decodeFile(currentPost.getImgPath()));
 
         return  convertView;
