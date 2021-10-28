@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -61,7 +62,6 @@ public class PostAdapter extends ArrayAdapter<Post> {
         LinearLayout llComment = convertView.findViewById(R.id.llComment);
         EditText editTxt_AddComment = convertView.findViewById(R.id.editTxt_AddComment);
         Button btnAddComment = convertView.findViewById(R.id.btnAddComment);
-
 
         if(currentPost.getLike() == 0)
         {
