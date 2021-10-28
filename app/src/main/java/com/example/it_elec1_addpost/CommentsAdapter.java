@@ -24,14 +24,7 @@ public class CommentsAdapter extends ArrayAdapter<Comments> {
 
         TextView txtComment = convertView.findViewById(R.id.txtComment);
 
-        ArrayList<Comments> comments = new ArrayList<>();
-        int MAX_SIZE = comments.size();
-
-        for(int i = 0; i < MAX_SIZE; i++){
-            if(currentComments.getPosition() == position){
-                txtComment.setText(currentComments.getComment());
-            }
-        }
+        txtComment.setText(currentComments.getComment());
 
         return convertView;
     }

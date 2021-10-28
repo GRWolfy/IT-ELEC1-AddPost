@@ -54,21 +54,24 @@ public class PostAdapter extends ArrayAdapter<Post> {
         Button btnLike = convertView.findViewById(R.id.btnLike);
         Button btnDelete = convertView.findViewById(R.id.btnDelete);
 
+        LinearLayout llLike = convertView.findViewById(R.id.llLike);
         ListView lstPost = convertView.findViewById(R.id.lstPost);
         Button btnComment = convertView.findViewById(R.id.btnComment);
         ListView lstComment = convertView.findViewById(R.id.lstComment);
         LinearLayout llComment = convertView.findViewById(R.id.llComment);
-        EditText editText_AddComment = convertView.findViewById(R.id.editTxt_AddComment);
+        EditText editTxt_AddComment = convertView.findViewById(R.id.editTxt_AddComment);
         Button btnAddComment = convertView.findViewById(R.id.btnAddComment);
 
 
         if(currentPost.getLike() == 0)
         {
+            llLike.setVisibility(View.INVISIBLE);
             btnLike.setText("Like");
             btnLike.setBackgroundColor(Color.parseColor("#242526"));
         }
         else
         {
+            llLike.setVisibility(View.VISIBLE);
             btnLike.setText("Liked");
             btnLike.setBackgroundColor(Color.parseColor("#FF3700B3"));
         }
@@ -100,7 +103,7 @@ public class PostAdapter extends ArrayAdapter<Post> {
                         public void onClick(View view) {
                             comment = new Comments();
                             comment.setPosition(position);
-                            comment.setComment(editText_AddComment.getText().toString());
+                            comment.setComment(editTxt_AddComment.getText().toString());
                             arrComments.add(comment);
                             adapter = new CommentsAdapter(context, arrComments);
                             lstComment.setAdapter(adapter);
